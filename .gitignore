@@ -1,0 +1,19 @@
+# Node
+node_modules/
+
+# Terraform
+Terraform/.terraform/
+Terraform/*.tfstate
+Terraform/*.tfstate.*
+Terraform/.terraform.lock.hcl
+
+# Keys
+Terraform/keys/
+
+# Environment variables
+.env
+*.pem
+*.key
+
+# VS Code
+.vscode/
