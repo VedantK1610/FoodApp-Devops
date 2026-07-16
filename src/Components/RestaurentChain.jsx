@@ -1,192 +1,64 @@
 import React from 'react'
 import './RestaurentChain.css'
 
+const restaurants = [
+  { name: 'Alakapuri', rating: 4.4, cuisine: 'South Indian, Kerala, North Indian', location: 'Kakkanad', offer: '10% OFF UPTO ₹40', img: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/k2why61tsxk9sh0sl68d' },
+  { name: 'Galaxy Family Restaurant', rating: 4.4, cuisine: 'Kerala, South Indian, Chinese, North...', location: 'Kakkanad', offer: 'FREE ITEM', img: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/jys7zsopl1sjy2wwxadd' },
+  { name: 'Aryaas', rating: 4.4, cuisine: 'South Indian, North Indian, Chinese', location: 'Kakkanad', offer: '', img: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/xejp6fugbtzu08vpfqmu' },
+  { name: 'Al Sheba Kuzhimandhi', rating: 4.1, cuisine: 'Arabian, Beverages', location: 'Kakkanad', offer: '10% OFF UPTO ₹40', img: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/56b7222d3239a954d09b42c05347debf' },
+  { name: 'Subway', rating: 3.9, cuisine: 'Healthy Food, Salad, Snacks,...', location: 'Kakkanad', offer: '50% OFF UPTO ₹100', img: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/1ace5fa65eff3e1223feb696c956b38b' },
+  { name: 'The Burger Junction', rating: 4.5, cuisine: 'American, Beverages', location: 'Kakkanad', offer: '', img: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/hqskgt9wjjgqkj74coyw' },
+  { name: 'KFC', rating: 4.1, cuisine: 'American, Burgers, Biriyani, Snacks,...', location: 'Kakkanad', offer: '20% OFF UPTO ₹50', img: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/56c9ab92bd79745fd152a30fa2525426' },
+  { name: "Amma's Pastries", rating: 3.9, cuisine: 'Desserts, Bakery', location: 'Kakkanad', offer: '10% OFF UPTO ₹40', img: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/ly5rzyg6tzwu4idmy4i1' },
+  { name: 'Thaal Kitchen', rating: 3.9, cuisine: 'Kerala, Arabian', location: 'Kakkanad', offer: '20% OFF UPTO ₹50', img: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/xxi1rb25fxm3le88weuo' },
+  { name: 'Burger Spot', rating: 4.5, cuisine: 'Burgers, Fast Food', location: 'Kakkanad', offer: '30% OFF UPTO ₹75', img: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/jbdpvb8bmzjirqmg44w3' },
+  { name: "Mc Donald's", rating: 4.3, cuisine: 'Burger, Beverages, Cafe, Desserts', location: 'Kakkanad', offer: '', img: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/ee5f8e06b300efc07c9fe3f4df40dfc4' },
+  { name: 'Palaaram', rating: 4.2, cuisine: 'Kerala, Biriyani, North Indian, Arabian,...', location: 'Kakkanad', offer: '30% OFF UPTO ₹75', img: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/zchpuqit7k4pdndgse4t' },
+  { name: 'The Good Bowl', rating: 4.0, cuisine: 'Biriyani, North Indian, Pastas, Punjabi', location: 'Chittethukara', offer: '40% OFF UPTO ₹80', img: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/0b3356a88b6fc5966c452c4c9b1b5e4a' },
+  { name: 'Sweet Truth - Cake and...', rating: 3.9, cuisine: 'Snacks, Bakery, Dessert, Beverages', location: 'Chittethukara', offer: '60% OFF UPTO ₹120', img: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/4a3b48488e3aa9bda13efd8cfcd95284' },
+  { name: 'Frozen Bottle - Milkshakes,...', rating: 4.1, cuisine: 'Desserts, Beverages, IceCream,...', location: 'Ernakulam', offer: '25% OFF UPTO ₹125', img: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/fx2mgrbp4ifryi76pgef' },
+  { name: 'Faasos - Wrap & Rolls', rating: 3.7, cuisine: 'Kebabs, Fast Food, Snacks, North...', location: 'Chittethukara', offer: '50% OFF UPTO ₹100', img: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/af33b81798b11deba338e94b7585d348' },
+]
+
 function RestaurentChain() {
-    return (
-        <div className='d-flex justify-content-center align-items-center mt-5'>
-            <div className='w-75'>
-                <h4 className='fw-bolder'>Top restaurant chains in Kochi</h4>
-                <div style={{gap:"50px",overflowY:"scroll"}} className='d-flex  align-items-center'>
-                    <div className='Hotel-card'>
-                        <div style={{
-                            backgroundImage: `url(https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/k2why61tsxk9sh0sl68d)`
-                        }} className='Hotel-Card-img '>
-                            <div className='Hotel-color'><h4 className='fw-bolder' >10% OFF UPTO ₹40</h4></div>
-                        </div>
-                        <h5 className='mt-3'>Alakapuri</h5>
-                        <i style={{color:"#20963a"}} className="fa-solid fa-star"></i>4.4
-                        <p style={{fontWeight:"300"}}>South indian, Kerala, North Indian <br />Kakkanad</p>
-                    </div>
-
-                    <div className='Hotel-card'>
-                        <div style={{
-                            backgroundImage: `url(https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/jys7zsopl1sjy2wwxadd)`
-                        }} className='Hotel-Card-img '>
-                            <div className='Hotel-color'><h4 className='fw-bolder' >FREE ITEM</h4></div>
-                        </div>
-                        <h5 className='mt-3'>Galaxy Family Restaurent</h5>
-                        <i style={{color:"#20963a"}} className="fa-solid fa-star"></i>4.4
-                        <p style={{fontWeight:"300"}}>kerala, South indian, Chinease, North.... <br />Kakkanad</p>
-                    </div>
-
-                    <div className='Hotel-card'>
-                        <div style={{
-                            backgroundImage: `url(https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/xejp6fugbtzu08vpfqmu)`
-                        }} className='Hotel-Card-img '>
-                            <div className='Hotel-color'><h4 className='fw-bolder' ></h4></div>
-                        </div>
-                        <h5 className='mt-3'>Aryaas</h5>
-                        <i style={{color:"#20963a"}} className="fa-solid fa-star"></i>4.4
-                        <p style={{fontWeight:"300"}}>South indian, North Indian, Chinease <br />Kakkanad</p>
-                    </div>
-
-                    <div className='Hotel-card'>
-                        <div style={{
-                            backgroundImage: `url(https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/56b7222d3239a954d09b42c05347debf)`
-                        }} className='Hotel-Card-img '>
-                            <div className='Hotel-color'><h4 className='fw-bolder' >10% OFF UPTO ₹40</h4></div>
-                        </div>
-                        <h5 className='mt-3'>Al Sheba Kuzhimandhi</h5>
-                        <i style={{color:"#20963a"}} className="fa-solid fa-star"></i>4.1
-                        <p style={{fontWeight:"300"}}>Arabian, Beverages <br />Kakkanad</p>
-                    </div>
-
-                    <div className='Hotel-card'>
-                        <div style={{
-                            backgroundImage: `url(https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/1ace5fa65eff3e1223feb696c956b38b)`
-                        }} className='Hotel-Card-img '>
-                            <div className='Hotel-color'><h4 className='fw-bolder' >50% OFF UPTO ₹100</h4></div>
-                        </div>
-                        <h5 className='mt-3'>Subway</h5>
-                        <i style={{color:"#20963a"}} className="fa-solid fa-star"></i>3.9
-                        <p style={{fontWeight:"300"}}>Healthy Food, Salad, Snacks,...<br />Kakkanad</p>
-                    </div>
-
-                    <div className='Hotel-card'>
-                        <div style={{
-                            backgroundImage: `url(https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/hqskgt9wjjgqkj74coyw)`
-                        }} className='Hotel-Card-img '>
-                            <div className='Hotel-color'><h4 className='fw-bolder' ></h4></div>
-                        </div>
-                        <h5 className='mt-3'>The Burger Junction</h5>
-                        <i style={{color:"#20963a"}} className="fa-solid fa-star"></i>4.5
-                        <p style={{fontWeight:"300"}}>American, Beverages<br />Kakkanad</p>
-                    </div>
-
-                    <div className='Hotel-card'>
-                        <div style={{
-                            backgroundImage: `url(https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/56c9ab92bd79745fd152a30fa2525426)`
-                        }} className='Hotel-Card-img '>
-                            <div className='Hotel-color'><h4 className='fw-bolder' ></h4></div>
-                        </div>
-                        <h5 className='mt-3'>KFC</h5>
-                        <i style={{color:"#20963a"}} className="fa-solid fa-star">20% OFF UPTO ₹50</i>4.1
-                        <p style={{fontWeight:"300"}}>American, Burgers, Biriyani, Snacks,...<br />Kakkanad</p>
-                    </div>
-
-                    <div className='Hotel-card'>
-                        <div style={{
-                            backgroundImage: `url(https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/ly5rzyg6tzwu4idmy4i1)`
-                        }} className='Hotel-Card-img '>
-                            <div className='Hotel-color'><h4 className='fw-bolder' ></h4>10% OFF UPTO ₹40</div>
-                        </div>
-                        <h5 className='mt-3'>Amma's Pastries</h5>
-                        <i style={{color:"#20963a"}} className="fa-solid fa-star"></i>3.9
-                        <p style={{fontWeight:"300"}}>Desserts, Bakery<br />Kakkanad</p>
-                    </div>
-
-                    <div className='Hotel-card'>
-                        <div style={{
-                            backgroundImage: `url(https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/xxi1rb25fxm3le88weuo)`
-                        }} className='Hotel-Card-img '>
-                            <div className='Hotel-color'><h4 className='fw-bolder' >20% OFF UPTO ₹50</h4></div>
-                        </div>
-                        <h5 className='mt-3'>Thaal Kitchen</h5>
-                        <i style={{color:"#20963a"}} className="fa-solid fa-star"></i>3.9
-                        <p style={{fontWeight:"300"}}>Kerala, Arabian<br />Kakkanad</p>
-                    </div>
-
-                    <div className='Hotel-card'>
-                        <div style={{
-                            backgroundImage: `url(https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/jbdpvb8bmzjirqmg44w3)`
-                        }} className='Hotel-Card-img '>
-                            <div className='Hotel-color'><h4 className='fw-bolder' >30% OFF UPTO ₹75</h4></div>
-                        </div>
-                        <h5 className='mt-3'>Burger Spot</h5>
-                        <i style={{color:"#20963a"}} className="fa-solid fa-star"></i>4.5
-                        <p style={{fontWeight:"300"}}><br />Kakkanad</p>
-                    </div>
-
-                    <div className='Hotel-card'>
-                        <div style={{
-                            backgroundImage: `url(https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/ee5f8e06b300efc07c9fe3f4df40dfc4)`
-                        }} className='Hotel-Card-img '>
-                            <div className='Hotel-color'><h4 className='fw-bolder' ></h4></div>
-                        </div>
-                        <h5 className='mt-3'>Mc Donald's</h5>
-                        <i style={{color:"#20963a"}} className="fa-solid fa-star"></i>4.3
-                        <p style={{fontWeight:"300"}}>Burger, Beverages, Cafe, Desserts<br />Kakkanad</p>
-                    </div>
-
-                    <div className='Hotel-card'>
-                        <div style={{
-                            backgroundImage: `url(https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/zchpuqit7k4pdndgse4t)`
-                        }} className='Hotel-Card-img '>
-                            <div className='Hotel-color'><h4 className='fw-bolder' >30% OFF UPTO ₹75</h4></div>
-                        </div>
-                        <h5 className='mt-3'>Palaaram</h5>
-                        <i style={{color:"#20963a"}} className="fa-solid fa-star"></i>4.2
-                        <p style={{fontWeight:"300"}}>Kerala, Biriyani, North Indian, Arabian,...<br />Kakkanad</p>
-                    </div>
-
-                    <div className='Hotel-card'>
-                        <div style={{
-                            backgroundImage: `url(https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/0b3356a88b6fc5966c452c4c9b1b5e4a)`
-                        }} className='Hotel-Card-img '>
-                            <div className='Hotel-color'><h4 className='fw-bolder' >40% OFF UPTO ₹80</h4></div>
-                        </div>
-                        <h5 className='mt-3'>The Good Bowl</h5>
-                        <i style={{color:"#20963a"}} className="fa-solid fa-star"></i>4
-                        <p style={{fontWeight:"300"}}>Biriyani, North Indian, Pastas, Punjabi<br />Chittethukara</p>
-                    </div>
-
-                    <div className='Hotel-card'>
-                        <div style={{
-                            backgroundImage: `url(https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/4a3b48488e3aa9bda13efd8cfcd95284)`
-                        }} className='Hotel-Card-img '>
-                            <div className='Hotel-color'><h4 className='fw-bolder' >60% OFF UPTO ₹120</h4></div>
-                        </div>
-                        <h5 className='mt-3'>Sweet Truth-Cake and...</h5>
-                        <i style={{color:"#20963a"}} className="fa-solid fa-star"></i>3.9
-                        <p style={{fontWeight:"300"}}>Snacks, Bakery, Dessert, Beverages<br />Chittethukara</p>
-                    </div>
-
-                    <div className='Hotel-card'>
-                        <div style={{
-                            backgroundImage: `url(https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/fx2mgrbp4ifryi76pgef)`
-                        }} className='Hotel-Card-img '>
-                            <div className='Hotel-color'><h4 className='fw-bolder' >25% OFF UPTO ₹125</h4></div>
-                        </div>
-                        <h5 className='mt-3'>Frozen Bottle - Milkshakes,...</h5>
-                        <i style={{color:"#20963a"}} className="fa-solid fa-star"></i>4.1
-                        <p style={{fontWeight:"300"}}>Deserts, Beverages, IceCream,...<br />Ernakulam</p>
-                    </div>
-
-                    <div className='Hotel-card'>
-                        <div style={{
-                            backgroundImage: `url(https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/af33b81798b11deba338e94b7585d348)`
-                        }} className='Hotel-Card-img '>
-                            <div className='Hotel-color'><h4 className='fw-bolder' >50% OFF UPTO ₹100</h4></div>
-                        </div>
-                        <h5 className='mt-3'>Faasos - Wrap & Rolls</h5>
-                        <i style={{color:"#20963a"}} className="fa-solid fa-star"></i>3.7
-                        <p style={{fontWeight:"300"}}>Kebabs, Fast Food, Snacks, North...<br />Chittethukara</p>
-                    </div>
-                </div>
-                <hr style={{width:"100%",marginTop:"-50px"}} />
-            </div>
+  return (
+    <div className="restaurant-section">
+      <section className="section">
+        <div className="section-header">
+          <h2>Top restaurant chains in Kochi</h2>
+          <div className="section-nav">
+            <button className="scroll-btn" onClick={() => document.getElementById('chain-scroll').scrollBy({ left: -600, behavior: 'smooth' })}>
+              <i className="fa-solid fa-chevron-left"></i>
+            </button>
+            <button className="scroll-btn" onClick={() => document.getElementById('chain-scroll').scrollBy({ left: 600, behavior: 'smooth' })}>
+              <i className="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
         </div>
-    )
+        <div className="chain-scroll" id="chain-scroll">
+          {restaurants.map((r, i) => (
+            <div className="resto-card" key={i}>
+              <div className="resto-img">
+                <img src={r.img} alt={r.name} />
+                {r.offer && <div className="resto-offer">{r.offer}</div>}
+              </div>
+              <div className="resto-info">
+                <h3>{r.name}</h3>
+                <div className="resto-rating">
+                  <span className="rating-star"><i className="fa-solid fa-star"></i> {r.rating}</span>
+                  <span className="rating-dot">•</span>
+                  <span className="rating-time">35-40 mins</span>
+                </div>
+                <p className="resto-cuisine">{r.cuisine}</p>
+                <p className="resto-location">{r.location}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <hr className="section-divider" />
+      </section>
+    </div>
+  )
 }
 
 export default RestaurentChain

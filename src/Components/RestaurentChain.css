@@ -1,30 +1,122 @@
-.Hotel-Card-img{
-    width: 290px;
-    height: 190px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 20px;
+.restaurant-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
-.Hotel-card{
-    width: 270px;
-    height: 400px;
-    transition: transform 160ms;
+
+.chain-scroll {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 8px;
 }
-.Hotel-card:hover{
-    transform: scale(.93) ;
+
+.resto-card {
+  flex: 0 0 auto;
+  width: 270px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s;
+  background: #fff;
 }
-.Hotel-color{
-    width: 290px;
-    height: 190px;
-    background: linear-gradient(0deg, rgba(2,0,36,1) 2%, rgba(9,9,121,0) 39%, rgba(0,212,255,0) 100%);    border-radius: 0px 0px 20px 20px;
-    position: relative;
+
+.resto-card:hover {
+  transform: scale(0.95);
 }
-.Hotel-color h4{
-    position: absolute;
-    bottom: 0;
-    left: 12px;
-    color: White;
-    font-family: 'Lexend', sans-serif;
-    letter-spacing: -2px;
+
+.resto-img {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.resto-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.resto-card:hover .resto-img img {
+  transform: scale(1.08);
+}
+
+.resto-offer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 12px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  font-family: 'Lexend', sans-serif;
+}
+
+.resto-info {
+  padding: 12px 4px;
+}
+
+.resto-info h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.resto-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.rating-star {
+  background: #48c479;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.rating-star i {
+  font-size: 10px;
+}
+
+.rating-dot {
+  color: #999;
+  font-size: 14px;
+}
+
+.rating-time {
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+}
+
+.resto-cuisine {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.resto-location {
+  font-size: 12px;
+  color: #999;
 }

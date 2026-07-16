@@ -1,0 +1,112 @@
+.footer-download {
+  background: #f1f0f4;
+  padding: 32px 20px;
+}
+
+.footer-download-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+}
+
+.download-text h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #41444a;
+  letter-spacing: -0.5px;
+  line-height: 1.3;
+}
+
+.download-badges {
+  display: flex;
+  gap: 20px;
+}
+
+.download-badges img {
+  height: 56px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.download-badges img:hover {
+  opacity: 0.8;
+}
+
+.footer-main {
+  background: #0a0a0a;
+  padding: 48px 20px;
+}
+
+.footer-main-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 40px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.footer-logo h3 {
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
+}
+
+.footer-copyright {
+  color: #888;
+  font-size: 13px;
+}
+
+.footer-col h4 {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.footer-col a {
+  display: block;
+  color: #9e9e9e;
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover {
+  color: #fc8019;
+}
+
+.cities-btn {
+  margin-top: 12px;
+  padding: 10px 20px;
+  background: transparent;
+  color: #9e9e9e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.cities-btn:hover {
+  color: #fc8019;
+  border-color: #fc8019;
+}
+
+.mt-4 {
+  margin-top: 24px;
+}
