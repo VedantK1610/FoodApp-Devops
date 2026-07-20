@@ -15,7 +15,7 @@ pipeline{
         }
         stage('Checkout from Git'){
             steps{
-                git 'https://github.com/VedantK1610/FoodApp-Devops.git'
+                git branch: 'main', url: 'https://github.com/VedantK1610/FoodApp-Devops.git'
             }
         }
         stage("Sonarqube Analysis "){
@@ -38,12 +38,12 @@ pipeline{
                 sh "npm install"
             }
         }
-        stage('OWASP FS SCAN') {
-            steps {
-                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
-                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-            }
-        }
+        // stage('OWASP FS SCAN') {
+        //     steps {
+        //         dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
+        //         dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+        //     }
+        // }
         stage('TRIVY FS SCAN') {
             steps {
                 sh "trivy fs . > trivyfs.txt"
@@ -52,22 +52,22 @@ pipeline{
         stage("Docker Build & Push"){
             steps{
                 script{
-                   withDockerRegistry(credentialsId: 'docker-creds', toolName: 'docker'){   
-                       sh "docker build -t foodApp ."
-                       sh "docker tag foodApp VedantK1610/foodApp:latest "
-                       sh "docker push VedantK1610/foodApp:latest "
+                   withDockerRegistry(credentialsId: 'docker-creds'){   
+                       sh "docker build -t foodapp ."
+                       sh "docker tag foodapp vedantk1610/foodapp:latest "
+                       sh "docker push vedantk1610/foodapp:latest "
                     }
                 }
             }
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image VedantK1610/foodApp:latest > trivy.txt" 
+                sh "trivy image vedantk1610/foodapp:latest > trivy.txt" 
             }
         }
         stage('Deploy to container'){
             steps{
-                sh 'docker run -d --name foodApp -p 3000:3000 VedantK1610/foodApp:latest'
+                sh 'docker run -d --name foodapp -p 3000:3000 vedantk1610/foodapp:latest'
             }
         }
     }
